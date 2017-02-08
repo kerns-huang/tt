@@ -24,8 +24,9 @@ def stocklist():
                 if (child.a is not None):
                     r = requests.get(child.a.get('href'))
                     soup = BeautifulSoup(r.content, "html.parser")
-                    ul = soup.find(name="ul", attrs={"class": "main_menu"})
-                    finanReport(ul.contents[5].a.get('href'))
+                    div = soup.find(name="div", attrs={"class": "submenu_cont"})
+                    print div.contents[5].ul.contents[7].a
+                    finanReport(div.contents[5].ul.contents[7].a.get('href'))
         page += 1
 
 
