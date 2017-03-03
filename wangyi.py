@@ -4,8 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 from bs4 import Tag
 from requests import request
-
-
 def stocklist():
     page = 0
     reportdate = 20160930
@@ -28,13 +26,9 @@ def stocklist():
                     print div.contents[5].ul.contents[7].a
                     finanReport(div.contents[5].ul.contents[7].a.get('href'))
         page += 1
-
-
 def finanReport(href):  ##获取财务报表信息
     r = requests.get(baseUrl + href)
     print r.content
-
-
 if __name__ == "__main__":
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36",
